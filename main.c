@@ -95,7 +95,7 @@ void temperature_control_loop(float temp_pot, int mode) {
         change_temperature(power);
         command = get_user_command();
 
-        count = (count + 1) % 2;
+        count = (count + 1) % 20;
         if(count == 0){
             send_ambient_temperature(external_temperature);
         }
@@ -153,7 +153,7 @@ void curve_mode(){
     int command = 0;
     while(command == 0 || command == 1 || command == 3 || command == -1){
         // sleep for 0.5 seconds
-        sleep(1);
+        usleep(500000);
 
         if(count == (next_time)){
             if(time_index == size){
